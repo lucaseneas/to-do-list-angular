@@ -1,8 +1,13 @@
 <p>home-page works!</p>
+<button (click)="logout()">Logout</button>
 <h3> Lista de Tarefas</h3>
+@for(task of tasks;track task.id){
 <div class="tarefa card">
-    <h4>Nome da Tarefa</h4>
-    <p>Descrição da Tarefa</p>
-    <p>Status da Tarefa</p>
+    <h5>Tarefa</h5>
+    <h4>{{task.name}}</h4>
+    <p>{{task.description}}</p>
+    <p>{{task.id}}</p>
+    <p>{{task.status}}</p>
     <button>Remover</button>
 </div>
+}
