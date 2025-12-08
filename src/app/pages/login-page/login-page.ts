@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../services/authentication-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -10,6 +11,7 @@ import { AuthenticationService } from '../../services/authentication-service';
 })
 export class LoginPage {
   private readonly _authenticationService = inject(AuthenticationService);
+  private readonly _router = inject(Router)
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required]),
@@ -18,8 +20,14 @@ export class LoginPage {
 
   loginRequest() {
     this._authenticationService.login(this.loginForm.value as UserLogin)
-      .subscribe((value) => {
-        console.log(value)
+      .subscribe({
+        next: (res) => {
+          console.log('Login success:', res);
+          this._router.navigate(['/home-page'])
+        },
+        error: (err) => {
+          console.error('Login error:', err);
+        }
       })
   }
 
