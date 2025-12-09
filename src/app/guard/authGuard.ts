@@ -12,11 +12,7 @@ export class AuthGuard implements CanActivate {
     _router = inject(Router)
     _authService = inject(AuthenticationService)
 
-    canActivate(
-        route: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot
-    ): boolean {
-
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
         if (this._authService.isAuthenticated()) {
             return true; // Permite acesso
         }
