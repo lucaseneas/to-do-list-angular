@@ -1,7 +1,48 @@
+@import '../../../styles/style.scss';
+
 :host {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100dvh;
+}
+
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+    color: $font-color1;
+
+    input {
+        background-color: $bg-color2;
+        width: 16em;
+        height: 3em;
+        border-radius: 0.5em;
+        border: none;
+    }
+
+    input:hover {
+        border: 2px solid black;
+    }
+
+    button {
+        font-weight: bold;
+        background-color: $primay-color;
+        color: white;
+        width: 16em;
+        height: 3em;
+        border-radius: 0.5em;
+        cursor: pointer;
+        border: none;
+        box-shadow: 2px 2px 5px #00000071;
+    }
+
+    button:hover {
+        box-shadow: 2px 2px 5px #000000b9;
+        background-color: transparent;
+        color: $font-color1;
+        border: 3px solid $primay-color;
+    }
 }
