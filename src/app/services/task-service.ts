@@ -14,6 +14,11 @@ export class TaskService {
   getTasksByUserId(userId: string): Observable<Task[]> {
     return this._httpClient.get<Task[]>(this.url + userId)
   }
+
+  createTask(task: { name: string; description: string; status: string }) {
+    return this._httpClient.post<Task>(this.url + sessionStorage.getItem("userId")!, task);
+  }
+
   removeTask(id: string | undefined) {
     return this._httpClient.delete(this.url + id)
   }

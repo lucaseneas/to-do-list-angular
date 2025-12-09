@@ -3,10 +3,11 @@ import { TaskService } from '../../services/task-service';
 import { Task } from '../../models/Task';
 import { AuthenticationService } from '../../services/authentication-service';
 import { Router } from '@angular/router';
+import { AddTaskModal } from '../../components/add-task-modal/add-task-modal';
 
 @Component({
   selector: 'app-home-page',
-  imports: [],
+  imports: [AddTaskModal],
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss',
 })
@@ -17,6 +18,7 @@ export class HomePage {
   private _route = inject(Router)
 
   tasks: Task[] = [];
+  showModal = false;
 
   constructor() {
     console.log("ngOnInit executado")
@@ -24,13 +26,35 @@ export class HomePage {
       next: (res: Task[]) => {
         console.log("Tarefas recebidas:", res)
         this.tasks = res
-        this._cdr.detectChanges() // Força detecção de mudanças
+        this._cdr.detectChanges()
       },
       error: (err) => {
         console.error("Erro ao carregar tarefas:", err)
       }
     })
+  }
 
+  openModal() {
+    this.showModal = true;
+  }
+
+  closeModal() {
+    this.showModal = false;
+  }
+
+  createTask(taskData: { name: string; description: string; status: string }) {
+    const task = { ...taskData };
+
+    this._taskService.createTask(task).subscribe({
+      next: (newTask: Task) => {
+        this.tasks.push(newTask);
+        this.showModal = false;
+        this._cdr.detectChanges();
+      },
+      error: (err) => {
+        console.error("Erro ao criar tarefa:", err);
+      }
+    });
   }
 
   removeTask(id: string | undefined) {
@@ -50,3 +74,4 @@ export class HomePage {
     this._route.navigate(['/login'])
   }
 }
+

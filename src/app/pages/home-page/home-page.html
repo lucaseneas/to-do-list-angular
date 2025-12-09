@@ -1,5 +1,7 @@
 <section class="task-section">
-    <h2>Em Andamento</h2>
+    <div class="task-section-header">
+        <h2>Em Andamento</h2> <button class="add-button" (click)="openModal()">+</button>
+    </div>
 
     @for(task of tasks;track task.id){
     <div class="task">
@@ -39,3 +41,7 @@
     </div>
     }
 </section>
+
+@if(showModal){
+<app-add-task-modal (closeModal)="closeModal()" (taskCreated)="createTask($event)"></app-add-task-modal>
+}

@@ -8,8 +8,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid red;
     padding: 0 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.205);
     background-color: $secondary-color;
 
     button {
