@@ -52,7 +52,6 @@ export class AuthenticationService {
   private isTokenExpired(token: string): boolean {
     try {
       const payload = JSON.parse(atob(token.split('.')[1]));
-      console.log(payload)
       const expiry = payload.exp * 1000; // Converte para milissegundos
       return Date.now() > expiry;
     } catch (e) {

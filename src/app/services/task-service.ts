@@ -7,10 +7,14 @@ import { Task } from '../models/Task';
   providedIn: 'root',
 })
 export class TaskService {
+
   url = "http://localhost:8080/task/"
   private readonly _httpClient = inject(HttpClient)
 
   getTasksByUserId(userId: string): Observable<Task[]> {
     return this._httpClient.get<Task[]>(this.url + userId)
+  }
+  removeTask(id: string | undefined) {
+    return this._httpClient.delete(this.url + id)
   }
 }

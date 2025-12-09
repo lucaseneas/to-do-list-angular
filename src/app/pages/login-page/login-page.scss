@@ -16,6 +16,7 @@
     color: $font-color1;
 
     input {
+        padding: 0.5em;
         background-color: $bg-color2;
         width: 16em;
         height: 3em;
@@ -29,7 +30,7 @@
 
     button {
         font-weight: bold;
-        background-color: $primay-color;
+        background-color: $primary-color;
         color: white;
         width: 16em;
         height: 3em;
@@ -43,6 +44,6 @@
         box-shadow: 2px 2px 5px #000000b9;
         background-color: transparent;
         color: $font-color1;
-        border: 3px solid $primay-color;
+        border: 3px solid $primary-color;
     }
 }

@@ -33,6 +33,17 @@ export class HomePage {
 
   }
 
+  removeTask(id: string | undefined) {
+    this._taskService.removeTask(id).subscribe({
+      next: () => {
+        this.tasks = this.tasks.filter(task => task.id !== id);
+        this._cdr.detectChanges();
+      },
+      error: (err) => {
+        console.error("Erro ao remover tarefa:", err);
+      }
+    });
+  }
 
   logout() {
     this._authenticationService.logout();

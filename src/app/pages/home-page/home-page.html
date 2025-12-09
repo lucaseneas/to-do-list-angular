@@ -1,13 +1,41 @@
-<p>home-page works!</p>
-<button (click)="logout()">Logout</button>
-<h3> Lista de Tarefas</h3>
-@for(task of tasks;track task.id){
-<div class="tarefa card">
-    <h5>Tarefa</h5>
-    <h4>{{task.name}}</h4>
-    <p>{{task.description}}</p>
-    <p>{{task.id}}</p>
-    <p>{{task.status}}</p>
-    <button>Remover</button>
-</div>
-}
+<section class="task-section">
+    <h2>Em Andamento</h2>
+
+    @for(task of tasks;track task.id){
+    <div class="task">
+        <h5>Tarefa</h5>
+        <h4>{{task.name}}</h4>
+        <p>{{task.description}}</p>
+        <p>{{task.id}}</p>
+        <p>{{task.status}}</p>
+        <button (click)="removeTask(task.id)">Remover</button>
+    </div>
+    }
+
+</section>
+<section class="task-section">
+    <h2>Pendentes</h2>
+    @for(task of tasks;track task.id){
+    <div class="task">
+        <h5>Tarefa</h5>
+        <h4>{{task.name}}</h4>
+        <p>{{task.description}}</p>
+        <p>{{task.id}}</p>
+        <p>{{task.status}}</p>
+        <button (click)="removeTask(task.id)">Remover</button>
+    </div>
+    }
+</section>
+<section class="task-section">
+    <h2>Concluidas</h2>
+    @for(task of tasks;track task.id){
+    <div class="task">
+        <h5>Tarefa</h5>
+        <h4>{{task.name}}</h4>
+        <p>{{task.description}}</p>
+        <p>{{task.id}}</p>
+        <p>{{task.status}}</p>
+        <button (click)="removeTask(task.id)">Remover</button>
+    </div>
+    }
+</section>
